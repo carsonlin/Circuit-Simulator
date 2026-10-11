@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.16)
+project(circuit_sim CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_executable(circuit_sim
+    src/main.cpp
+    src/Matrix.cpp
+    src/Solver.cpp
+)
+target_include_directories(circuit_sim PRIVATE include)
+target_compile_options(circuit_sim PRIVATE -Wall -Wextra)

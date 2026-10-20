@@ -7,22 +7,6 @@ Matrix::Matrix(std::size_t rows, std::size_t cols)
 {
 }
 
-std::size_t Matrix::rows() const{
-    return m_rows; 
-}
-
-std::size_t Matrix::cols() const{
-    return m_cols; 
-}
-
-double& Matrix::operator()(std::size_t row, std::size_t col){
-    return m_table[index(row, col)];
-}
-
-double Matrix::operator()(std::size_t row, std::size_t col) const{
-    return m_table[index(row, col)];
-}
-
 void Matrix::print() const {
     for (std::size_t r = 0; r < m_rows; ++r) {
         for (std::size_t c = 0; c < m_cols; ++c) {
@@ -40,5 +24,11 @@ void Matrix::swapRows(std::size_t r1, std::size_t r2){
         double temp = m_table[index(r1, i)];
         m_table[index(r1, i)] = m_table[index(r2, i)];
         m_table[index(r2, i)] = temp;
+    }
+}
+
+void Matrix::reset() {
+    for (double& value : m_table) {
+        value = 0.0;
     }
 }

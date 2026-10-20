@@ -8,7 +8,7 @@ constexpr double threshold = 1e-12;
 std::vector<double> solve(Matrix augmented){
 
     if(augmented.cols() != augmented.rows() + 1){
-        throw std::runtime_error("System invalid, matrix must be n x (n + 1) ");
+        throw std::runtime_error("System invalid, matrix must be of dimensions n x (n + 1) ");
     }
 
     //iterate diagonal
@@ -37,10 +37,21 @@ std::vector<double> solve(Matrix augmented){
                 augmented(row, col) -= (augmented(diag, col) * ratio);
             }
         }
-
-        //back substitution
-        
-
     }
+
+    //back substitution
+    std::vector<double> solved_vector(augmented.rows());
+
+    for(std::size_t i = augmented.rows(); i-- > 0;){
+        double solution = augmented(i, augmented.cols() - 1);
+        for(std::size_t j = i + 1; j < augmented.cols() - 1; ++j){
+            solution -= solved_vector[j] * augmented(i, j);
+        }
+        solution = solution / augmented(i, i);
+        solved_vector[i] = solution;
+    }
+
+
+    return solved_vector;
 }
 

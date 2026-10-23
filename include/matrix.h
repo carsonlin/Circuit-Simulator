@@ -7,6 +7,7 @@
 // Dense matrix stored row-major in one contiguous vector.
 class Matrix {
 public:
+    Matrix() : m_rows(0), m_cols(0) {}
     Matrix(std::size_t rows, std::size_t cols);
  
     double& operator()(std::size_t row, std::size_t col) {

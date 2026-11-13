@@ -1,7 +1,9 @@
 #pragma once
 #include <vector>
-#include "Matrix.h"
+#include "matrix.h"
 
-// Solves a system: n rows, n+1 columns (last column = right-hand side)
+// Solves the linear system in an augmented n x (n + 1) matrix [A | b]
+// using Gaussian elimination with partial pivoting, then back substitution.
+// Returns x such that A·x = b.
 
-std::vector<double> solve(Matrix augmented);
+std::vector<double> solve(Matrix augmented); 

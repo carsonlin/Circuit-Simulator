@@ -1,18 +1,17 @@
 #pragma once
-#include <cstddef>
 #include "component.h"
  
-// node1 = positive terminal, node2 = negative terminal: V(node1) - V(node2) = voltage.
-// The source's current is an extra unknown at its row and column k in the matrix
+// Each voltage source adds index k: column k is its unknown current
+// (entering the KCL rows of its two nodes), and row k is its equation V(n+) - V(n-) = value.
 
 class VoltageSource : public Component {
 public:
-    VoltageSource(std::size_t n1, std::size_t n2, double v);
+    VoltageSource(std::string name, std::size_t n1, std::size_t n2, double v);
  
     void setup(const Matrix& matrix) override;
     void stamp(Matrix& matrix) const override;
  
-    void setBranchIndex(std::size_t k) { index = k; }
+    void setIndex(std::size_t k) { index = k; }
     std::size_t getBranchIndex() const { return index; }
     double getVoltage() const { return voltage; }
  

@@ -1,4 +1,4 @@
-#include "Matrix.h"
+#include "matrix.h"
 #include <iostream>
 #include <iomanip>
 
@@ -27,7 +27,7 @@ void Matrix::swapRows(std::size_t r1, std::size_t r2){
     }
 }
 
-void Matrix::reset() {
+void Matrix::zeroMatrix() {
     for (double& value : m_table) {
         value = 0.0;
     }

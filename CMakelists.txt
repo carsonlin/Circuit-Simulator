@@ -11,6 +11,8 @@ add_executable(circuit_sim
     src/resistor.cpp
     src/voltagesource.cpp
     src/circuit.cpp
+    src/parser.cpp
+    src/montecarlo.cpp
 )
 target_include_directories(circuit_sim PRIVATE include)
 target_compile_options(circuit_sim PRIVATE -Wall -Wextra)
